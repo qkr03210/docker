@@ -13,6 +13,8 @@ env/
 **/cache/
 **/data/
 **/db/
+!mysql/
+!mysql/.gitkeep
 **/mysql/
 **/volumes/
 .docker/
@@ -40,3 +42,4 @@ Thumbs.db
 
 # 기타
 *.log
+
