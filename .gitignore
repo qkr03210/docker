@@ -1,0 +1,42 @@
+/dockge_data/db-config.json
+# Python 관련
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+venv/
+env/
+
+# Docker 관련
+**/logs/
+**/tmp/
+**/cache/
+**/data/
+**/db/
+**/mysql/
+**/volumes/
+.docker/
+
+# MySQL 데이터 (예: 컨테이너 폴더 내부의 db)
+**/mysql/data/
+**/mysql/logs/
+**/mysql/conf/
+
+# Jenkins 관련
+jenkins_data/
+jenkins.log
+*.jenkins
+*.lastSuccessful
+*.lastStable
+jobs/
+workspace/
+
+# VSCode 설정
+.vscode/
+
+# OS 관련
+.DS_Store
+Thumbs.db
+
+# 기타
+*.log

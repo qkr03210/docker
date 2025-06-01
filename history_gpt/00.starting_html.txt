@@ -1,0 +1,9 @@
+Jenkins: http://localhost:8080
+
+Dockge: http://localhost:5001
+
+Python App: http://localhost:8000 (FastAPI 등)
+
+
+docker-compose down
+docker-compose up -d

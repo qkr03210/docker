@@ -1,0 +1,49 @@
+version: "3.8"
+services:
+  py-app:
+    build: ./py_app
+    container_name: py_app
+    volumes:
+      - ./py_app:/app
+    working_dir: /app
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: appdb
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: apppass
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    user: root
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - ./jenkins_data:/var/jenkins_home
+
+  dockge:
+    container_name: dockge
+    image: louislam/dockge:latest
+    restart: always
+    environment:
+      DOCKGE_STACKS_DIR: /stacks
+      DOCKGE_ENABLE_CONSOLE: "true"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./dockge_data:/app/data
+      - ./stacks:/stacks
+    ports:
+      - 5001:5001
